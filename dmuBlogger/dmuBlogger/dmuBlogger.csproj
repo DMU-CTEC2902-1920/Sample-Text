@@ -88,8 +88,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\Home.css" />
     <Content Include="Global.asax" />
     <Content Include="HTML\Home.html" />
+    <Content Include="IMAGE\dmuBloggerBanner.jpg" />
+    <Content Include="IMAGE\dmuBloggerText.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
