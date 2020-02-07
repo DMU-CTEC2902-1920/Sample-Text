@@ -1,4 +1,6 @@
 ﻿body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:white;
 }
 
 .Contents {
@@ -111,9 +113,11 @@ footer {
 
     padding: 0px;
 }
-.firstColumn p {
-    margin: auto;
-}
+    .firstColumn p {
+        margin: auto;
+        color: darkblue;
+        font-weight: 700;
+    }
 .secondColumn {
     display: flex;
     flex-direction: column;
@@ -122,8 +126,10 @@ footer {
     padding: 0px;
 }
     .secondColumn p {
-    margin: auto;
-}
+        margin: auto;
+        color: darkblue;
+        font-weight: 700;
+    }
 
 .thirdColumn {
     display: flex;
@@ -132,6 +138,8 @@ footer {
 
     padding: 0px;
 }
-.thirdColumn p {
-    margin: auto;
-}
+    .thirdColumn p {
+        color: darkblue;
+        margin: auto;
+        font-weight: 700;
+    }
