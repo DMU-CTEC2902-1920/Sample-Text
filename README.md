@@ -1,13 +1,13 @@
 # Sample-Text
 
-##Current Team:
+## Current Team:
 
-###Janzeb
+### Janzeb
 
-###Adam
+### Adam
 
-###Ben
+### Ben
 
-###Raymond
+### Raymond
 
-####TeamSampleText 2020
+#### TeamSampleText 2020
