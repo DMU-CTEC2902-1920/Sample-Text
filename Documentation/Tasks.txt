@@ -1,0 +1,23 @@
+Ben:
+Register
+Login
+Close account 
+Mod reports
+Mod suggestions
+Mod user management
+Review page/comments
+=======================
+Rayman: 
+Game search
+Review Search 
+Developer Search 
+Privarcy Policy 
+Contact
+Setting Page 
+============
+Zeb:
+Add review
+Add dev
+Game reviews/all reviews
+Game page
+Dev page
