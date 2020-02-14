@@ -15,12 +15,11 @@
 }
 
 .KeypadLogoBanner {
-
     width: 50%;
-    height: 180px;    
+    height: 180px;
     margin: auto;
     background-image: url("../IMAGE/dmuBloggerBanner.jpg");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 }
 .Navigation {
     width: 70%;
@@ -97,7 +96,7 @@ footer {
 }
 .flexOrder {
 
-    width: 50%;
+    width: 55%;
     margin: auto;
     display: flex;
     flex-direction: row;
