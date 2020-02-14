@@ -16,6 +16,7 @@ Contact
 Setting Page 
 ============
 Zeb:
+Home page
 Add review
 Add dev
 Game reviews/all reviews
