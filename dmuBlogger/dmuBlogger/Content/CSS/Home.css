@@ -15,12 +15,11 @@
 }
 
 .KeypadLogoBanner {
-
     width: 50%;
-    height: 180px;    
+    height: 180px;
     margin: auto;
     background-image: url("../IMAGE/dmuBloggerBanner.jpg");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
 }
 .Navigation {
     width: 70%;
@@ -28,17 +27,19 @@
     margin: auto;
 
 }
+    .Navigation .SelectedButton {
+        background-color: #630101;
+    }
     .Navigation button {
         width: 160px;
         height: 40px;
         color: white;
-        /* Note that the dark red is #630101*/
         background-color: #c40000;
         border: 3px solid #630101;
         border-radius: 10px;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size:24px;
-        font-weight:700;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
     }
 .Welcome {
     width: 50%;
@@ -97,7 +98,7 @@ footer {
 }
 .flexOrder {
 
-    width: 50%;
+    width: 55%;
     margin: auto;
     display: flex;
     flex-direction: row;
