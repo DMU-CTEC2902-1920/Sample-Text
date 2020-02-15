@@ -17,6 +17,8 @@ Setting Page
 ============
 Zeb:
 Home page
-Add review + Add developer/Dev page + Add game   } On one page
-Game page + Game review list (lists all reviews) } On one page
-
+Add review 
+Add developer
+Dev page 
+Game page
+Game review list (lists all reviews) 
