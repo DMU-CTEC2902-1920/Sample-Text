@@ -105,6 +105,14 @@
     <Content Include="Content\IMAGE\dmuBloggerBanner.jpg" />
     <Content Include="Content\IMAGE\dmuBloggerText.jpg" />
     <Content Include="Global.asax" />
+    <Content Include="Views\BenPrototypes\CloseAccount.html" />
+    <Content Include="Views\BenPrototypes\Login.html" />
+    <Content Include="Views\BenPrototypes\ManageUsers.html" />
+    <Content Include="Views\BenPrototypes\Register.html" />
+    <Content Include="Views\BenPrototypes\Reports.html" />
+    <Content Include="Views\BenPrototypes\ReviewPage.html" />
+    <Content Include="Views\BenPrototypes\Styles.css" />
+    <Content Include="Views\BenPrototypes\Suggestions.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
