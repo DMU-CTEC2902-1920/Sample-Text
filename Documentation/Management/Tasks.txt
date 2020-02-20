@@ -24,7 +24,7 @@ Contact
 Setting Page 
 ============
 Zeb:
-Home page
+Home page - Non-Functional
 Add review 
 Add developer
 Dev page 
