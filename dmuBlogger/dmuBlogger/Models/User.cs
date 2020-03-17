@@ -9,6 +9,11 @@ namespace dmuBlogger.Models
     public class User
     {
 
+        public User()
+        {
+            this.Comments = new HashSet<Comment>();
+        }
+
         [Key]
         public Int32 UserId { get; set; }
         [Required]
@@ -19,6 +24,8 @@ namespace dmuBlogger.Models
         public String UserPassword { get; set; }
 
         public Boolean UserSuspended { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
 
     }
 }
