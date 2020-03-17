@@ -147,6 +147,14 @@
     <Compile Include="Migrations\202003171635481_ReviewContext.designer.cs">
       <DependentUpon>202003171635481_ReviewContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003171838125_ReviewContext1.cs" />
+    <Compile Include="Migrations\202003171838125_ReviewContext1.designer.cs">
+      <DependentUpon>202003171838125_ReviewContext1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003171857127_ReviewContext2.cs" />
+    <Compile Include="Migrations\202003171857127_ReviewContext2.designer.cs">
+      <DependentUpon>202003171857127_ReviewContext2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Developer.cs" />
@@ -282,11 +290,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Reviews\Create.cshtml" />
-    <Content Include="Views\Reviews\Delete.cshtml" />
-    <Content Include="Views\Reviews\Details.cshtml" />
-    <Content Include="Views\Reviews\Edit.cshtml" />
-    <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Developers\Create.cshtml" />
     <Content Include="Views\Developers\Delete.cshtml" />
     <Content Include="Views\Developers\Details.cshtml" />
@@ -307,6 +310,11 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Reviews\Delete.cshtml" />
+    <Content Include="Views\Reviews\Details.cshtml" />
+    <Content Include="Views\Reviews\Edit.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003171635481_ReviewContext.resx">
       <DependentUpon>202003171635481_ReviewContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171838125_ReviewContext1.resx">
+      <DependentUpon>202003171838125_ReviewContext1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171857127_ReviewContext2.resx">
+      <DependentUpon>202003171857127_ReviewContext2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
