@@ -1,11 +1,19 @@
+Once a page exists and is uploaded to github please assign a "Non-Functional" flare to it.
+Once all controllers, models and views were created for the page, flare it as "Ready for Functionality".
+Once the page is fully functional with all the code being done, flare it as "Functional".
+Functional pages will be reviewed to eliminate all errors, ensure everything works as expected and
+  there are no cases which could break the page. Once reviewed, the page is to be flared as "Staged".
+Staged pages, once all of the functionality of all the related pages if deemed Staged, are to be changed
+  (at the same time) to Deployed. That marks an end for a closely-related set of pages.
+
 Ben:
-Register
-Login
-Close account 
-Mod reports
-Mod suggestions
-Mod user management
-Review page/comments
+Register - Non-Functional
+Login - Non-Functional
+Close account - Non-Functional
+Mod reports - Non-Functional
+Mod suggestions - Non-Functional
+Mod user management - Non-Functional
+Review page/comments - Non-Functional
 =======================
 Rayman: 
 Game search
@@ -16,7 +24,7 @@ Contact
 Setting Page 
 ============
 Zeb:
-Home page
+Home page - Non-Functional
 Add review 
 Add developer
 Dev page 
