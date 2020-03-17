@@ -9,6 +9,6 @@ namespace dmuBlogger.Models
     {
         public virtual int DeveloperId { get; set; }
         public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
+        public virtual string Description { get; set; }
     }
 }

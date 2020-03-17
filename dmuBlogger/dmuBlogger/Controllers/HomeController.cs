@@ -8,9 +8,22 @@ namespace dmuBlogger.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Reviews()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Developers()
+        {
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
     }
