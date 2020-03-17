@@ -9,7 +9,7 @@ namespace dmuBlogger.Models
     public class Developer
     {
 
-        [Required]
+        [Key]
         public Int32 DeveloperId { get; set; }
         [Required]
         public String DeveloperName { get; set; }
