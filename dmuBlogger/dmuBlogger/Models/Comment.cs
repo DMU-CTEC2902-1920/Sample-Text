@@ -3,29 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dmuBlogger.Models
 {
     public class Comment
     {
+        public virtual int CommentID { get; set; }
+        public virtual int ReviewID { get; set; }
 
-        [Key]
-        public Int32 CommentId { get; set; }
-        [Required]
-        public String CommentContent { get; set; }
-
-        [Required]
-        public Int32 UserId { get; set; }
-
-        [Required]
-        public Int32 GameId { get; set; }
-
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
-
-        [ForeignKey("GameId")]
-        public virtual Game Game { get; set; }
-
+        [DataType(DataType.MultilineText)]
+        public virtual string Description { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string EMail { get; set; }
     }
 }

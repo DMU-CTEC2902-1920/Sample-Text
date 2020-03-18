@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using dmuBlogger.Data;
 using dmuBlogger.Models;
 
 namespace dmuBlogger.Controllers
@@ -46,7 +47,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeveloperId,DeveloperName,DeveloperPictureURL,DeveloperWebsiteURL")] Developer developer)
+        public ActionResult Create([Bind(Include = "DeveloperId,Name,Description")] Developer developer)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +79,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeveloperId,DeveloperName,DeveloperPictureURL,DeveloperWebsiteURL")] Developer developer)
+        public ActionResult Edit([Bind(Include = "DeveloperId,Name,Description")] Developer developer)
         {
             if (ModelState.IsValid)
             {

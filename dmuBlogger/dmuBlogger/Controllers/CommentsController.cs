@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using dmuBlogger.Data;
 using dmuBlogger.Models;
 
 namespace dmuBlogger.Controllers
@@ -17,8 +18,7 @@ namespace dmuBlogger.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.Game).Include(c => c.User);
-            return View(comments.ToList());
+            return View(db.Comments.ToList());
         }
 
         // GET: Comments/Details/5
@@ -39,8 +39,6 @@ namespace dmuBlogger.Controllers
         // GET: Comments/Create
         public ActionResult Create()
         {
-            ViewBag.GameId = new SelectList(db.Games, "GameId", "GameName");
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "UserName");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentId,CommentContent,UserId,GameId")] Comment comment)
+        public ActionResult Create([Bind(Include = "CommentID,ReviewID,Description,Name,EMail")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -57,9 +55,6 @@ namespace dmuBlogger.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.GameId = new SelectList(db.Games, "GameId", "GameName", comment.GameId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "UserName", comment.UserId);
             return View(comment);
         }
 
@@ -75,8 +70,6 @@ namespace dmuBlogger.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GameId = new SelectList(db.Games, "GameId", "GameName", comment.GameId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "UserName", comment.UserId);
             return View(comment);
         }
 
@@ -85,7 +78,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommentId,CommentContent,UserId,GameId")] Comment comment)
+        public ActionResult Edit([Bind(Include = "CommentID,ReviewID,Description,Name,EMail")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -93,8 +86,6 @@ namespace dmuBlogger.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GameId = new SelectList(db.Games, "GameId", "GameName", comment.GameId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "UserName", comment.UserId);
             return View(comment);
         }
 

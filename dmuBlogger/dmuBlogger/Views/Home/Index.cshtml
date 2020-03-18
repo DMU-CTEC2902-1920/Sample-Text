@@ -1,64 +1,32 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Home Page";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="~/Content/CSS/Home.css" />
-    <meta charset="utf-8" />
-    <title>dmuBlogger | A game review portal</title>
-</head>
-<body>
-    <div class="Contents">
-        <header>
-            <div class="BannerNavigationContainer">
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">DmuBlogger is a great site for sharing reviews, talking games and high quality discussion</p>
+</div>
 
-            </div>
-            <div class="KeypadLogoBanner"> </div>
-            <nav class="Navigation">
-                <button class="SelectedButton">Home</button>
-                <button>Search</button>
-                <button>Contact Us</button>
-                <button>Register</button>
-                <button>Login</button>
-            </nav>
-        </header>
-        <section>
-            <div class="Welcome">
-                <p>Welcome to dmuBlogger</p>
-            </div>
-            <div class="Message">
-                <p>
-                    The number one website for those gamers who want to know more about what others think of the different games out there.
-                </p>
-            </div>
-            <div class="flexOrder">
-                <div class="firstColumn">
-                    <p>Puzzle Games</p>
-                    <p>Trivia</p>
-                    <p>Combat Games</p>
-                    <p>Kids Games</p>
-                </div>
-                <div class="secondColumn">
-                    <p>Role Playing Games</p>
-                    <div class="TextLogo"></div>
-                    <p>Board Games</p>
-                </div>
-                <div class="thirdColumn">
-                    <p>Racing Games</p>
-                    <p>18+ Games</p>
-                    <p>Platform Games</p>
-                    <p>Card Games</p>
-                </div>
-            </div>
-        </section>
-        <footer>
-            <div class="FooterText">
-                dmuBlogger © 2020, Team SampleText
-            </div>
-
-        </footer>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Reviews</h2>
+        <p>
+            We have an extensive collection of reviews for you to browse
+            and enjoy. Take your time to read over reviews for your favourite game,
+            comment and discuss them with other users!
+        </p>
+        <p><a class="btn btn-default" href="~/Reviews">Browse Reviews &raquo;</a></p>
     </div>
-</body>
-</html>
+    <div class="col-md-4">
+        <h2>Games</h2>
+        <p>We have a database of games for you to browse, from which you can see all
+        reviews for that game. You can also check the game's details to learn more about it.</p>
+        <p><a class="btn btn-default" href="~/Games">Browse Games &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Developers</h2>
+        <p>Every game has the developer behind it, and DmuBlogger is the best place to get
+        info about them! Browse and add developers and browse game by developer.</p>
+        <p><a class="btn btn-default" href="~/Developers">Browse Developers &raquo;</a></p>
+    </div>
+</div>
