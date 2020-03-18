@@ -55,7 +55,6 @@ namespace dmuBlogger.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(comment);
         }
 
