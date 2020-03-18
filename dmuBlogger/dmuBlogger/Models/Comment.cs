@@ -16,10 +16,10 @@ namespace dmuBlogger.Models
         public String CommentContent { get; set; }
 
         [Required]
-        public long UserId { get; set; }
+        public Int32 UserId { get; set; }
 
         [Required]
-        public long GameId { get; set; }
+        public Int32 GameId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
