@@ -135,12 +135,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Developer.cs" />
+    <Compile Include="Models\DeveloperContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,6 +159,11 @@
     <Content Include="Views\Games\Edit.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Developers\Create.cshtml" />
+    <Content Include="Views\Developers\Delete.cshtml" />
+    <Content Include="Views\Developers\Details.cshtml" />
+    <Content Include="Views\Developers\Edit.cshtml" />
+    <Content Include="Views\Developers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
