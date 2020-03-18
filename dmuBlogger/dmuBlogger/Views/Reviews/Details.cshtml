@@ -68,7 +68,10 @@
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "Index") |
+        @Html.ActionLink("View Comments", "../Comments")
+        <!--Html.ActionLink("View Comments", "../Comments", new { ReviewID = Model.ReviewID })-->
+        @{ TempData["ReviewID"] = Model.ReviewID; }
     </p>
 </body>
 </html>

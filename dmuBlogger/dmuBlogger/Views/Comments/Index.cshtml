@@ -2,6 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int x = Convert.ToInt32(TempData["ReviewID"]);
 }
 
 <!DOCTYPE html>
@@ -9,11 +10,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Comments for @TempData["ReviewID"]</title>
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        Comments for @TempData["ReviewID"]
+        <br />
+        @Html.ActionLink("Add Comment", "Create", new { id = TempData["ReviewID"] })
     </p>
     <table class="table">
         <tr>
@@ -33,27 +36,30 @@
         </tr>
     
     @foreach (var item in Model) {
-        <tr>
-            <!--<td>
-                @Html.DisplayFor(modelItem => item.ReviewID)
-            </td>-->
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <!--<td>
-                @Html.DisplayFor(modelItem => item.EMail)
-            </td>-->
-            <!--<td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
-            </td>-->
-        </tr>
+        if (item.ReviewID == Convert.ToInt32(TempData["ReviewID"]))
+        {
+            <tr>
+                <!--<td>
+                    @Html.DisplayFor(modelItem => item.ReviewID)
+                </td>-->
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <!--<td>
+                    @Html.DisplayFor(modelItem => item.EMail)
+                </td>-->
+                <!--<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CommentID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CommentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+                </td>-->
+            </tr>
+        }
     }
-    
+
     </table>
 </body>
 </html>

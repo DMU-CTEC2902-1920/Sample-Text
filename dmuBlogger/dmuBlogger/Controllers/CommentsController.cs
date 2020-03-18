@@ -16,8 +16,10 @@ namespace dmuBlogger.Controllers
         private CommentContext db = new CommentContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index()//string ReviewID)
         {
+            //Int32 ReviewIDInt = Convert.ToInt32(ReviewID);
+            //ViewData["ReviewID"] = ReviewIDInt;
             return View(db.Comments.ToList());
         }
 
@@ -37,8 +39,9 @@ namespace dmuBlogger.Controllers
         }
 
         // GET: Comments/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewData["id"] = id;
             return View();
         }
 
@@ -51,6 +54,7 @@ namespace dmuBlogger.Controllers
         {
             if (ModelState.IsValid)
             {
+                comment.ReviewID = Convert.ToInt32(TempData["id"]);
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
