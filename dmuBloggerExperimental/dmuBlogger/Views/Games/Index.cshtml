@@ -8,9 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    Games for @TempData["DeveloperID"]
+    Games for @ViewData["id"]
     <br />
-    @Html.ActionLink("Add Game", "Create", new { id = TempData["DeveloperID"] })
+    @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] })
 </p>
 <table class="table">
     <tr>
@@ -28,7 +28,7 @@
 
 @foreach (var item in Model)
 {
-    if (item.DeveloperID == Convert.ToInt32(TempData["DeveloperID"]))
+    if (item.DeveloperID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
     {
     <tr>
         <td>

@@ -31,6 +31,6 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.DeveloperId }) |
     @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("View Games", "../Games")
+    @Html.ActionLink("View Games", "../Games/Index", new { id = Model.DeveloperId })
     @{ TempData["DeveloperID"] = Model.DeveloperId; }
 </p>

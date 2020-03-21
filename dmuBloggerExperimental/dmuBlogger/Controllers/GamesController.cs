@@ -16,8 +16,9 @@ namespace dmuBlogger.Controllers
         private GameContext db = new GameContext();
 
         // GET: Games
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            ViewData["id"] = id;
             return View(db.Games.ToList());
         }
 
