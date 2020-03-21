@@ -5,15 +5,15 @@ namespace dmuBlogger.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<dmuBlogger.Data.GameContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<dmuBlogger.Data.ReviewContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "dmuBlogger.Data.GameContext";
+            ContextKey = "dmuBlogger.Data.ReviewContext";
         }
 
-        protected override void Seed(dmuBlogger.Data.GameContext context)
+        protected override void Seed(dmuBlogger.Data.ReviewContext context)
         {
             //  This method will be called after migrating to the latest version.
 

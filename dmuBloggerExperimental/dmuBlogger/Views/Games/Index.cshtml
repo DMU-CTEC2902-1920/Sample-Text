@@ -3,12 +3,20 @@
 @{
     ViewBag.Title = "Index";
     int x = Convert.ToInt32(TempData["DeveloperID"]);
+    string Title = "";
+    if (ViewData["id"] == null)
+    {
+        Title = "All games";
+    }
+    else
+    {
+        Title = "Games by " + ViewData["name"];
+    }
 }
 
-<h2>Index</h2>
+    <h2>@Title</h2>
 
 <p>
-    Games for @ViewData["id"]
     <br />
     @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] })
 </p>

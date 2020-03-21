@@ -2,12 +2,21 @@
 
 @{
     ViewBag.Title = "Index";
+    string Title = "";
+    if (ViewData["id"] == null)
+    {
+        Title = "All reviews";
+    }
+    else
+    {
+        Title = "Reviews for " + ViewData["name"];
+    }
 }
 
-<h2>Index</h2>
+<h2>@Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Write review", "Create", new { id = ViewData["id"] })
 </p>
 <table class="table">
     <tr>
@@ -24,40 +33,43 @@
             @Html.DisplayNameFor(model => model.Score)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SelectedDeveloper)
+            @Html.DisplayNameFor(model => model.DeveloperID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SelectedGame)
+            @Html.DisplayNameFor(model => model.GameID)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectedDeveloper)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelectedGame)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
-        </td>
-    </tr>
+    if (item.GameID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeveloperID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
+            </td>
+        </tr>
+    }
 }
 
 </table>

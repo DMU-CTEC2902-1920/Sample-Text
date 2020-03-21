@@ -18,7 +18,18 @@ namespace dmuBlogger.Controllers
         // GET: Games
         public ActionResult Index(int? id)
         {
-            ViewData["id"] = id;
+            if (id != null)
+            {
+                DeveloperContext dbDeveloper = new DeveloperContext();
+                Developer developer = dbDeveloper.Developers.Find(id);
+                ViewData["id"] = id;
+                ViewData["name"] = developer.Name;
+                ViewData["description"] = developer.Description;
+            }
+            else
+            {
+                ViewData["id"] = null;
+            }
             return View(db.Games.ToList());
         }
 

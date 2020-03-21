@@ -16,8 +16,20 @@ namespace dmuBlogger.Controllers
         private ReviewContext db = new ReviewContext();
 
         // GET: Reviews
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            if (id != null)
+            {
+                GameContext dbGame = new GameContext();
+                Game game = dbGame.Games.Find(id);
+                ViewData["id"] = id;
+                ViewData["name"] = game.GameName;
+                ViewData["releasedate"] = game.GameReleaseDate;
+            }
+            else
+            {
+                ViewData["id"] = null;
+            }
             return View(db.Reviews.ToList());
         }
 
@@ -37,8 +49,15 @@ namespace dmuBlogger.Controllers
         }
 
         // GET: Reviews/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            ViewData["id"] = id;
+            GameContext dbGame = new GameContext();
+            Game game = dbGame.Games.Find(id);
+            ViewData["id"] = id;
+            ViewData["name"] = game.GameName;
+            ViewData["releasedate"] = game.GameReleaseDate;
+            ViewData["developerID"] = game.DeveloperID;
             return View();
         }
 
@@ -47,10 +66,12 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReviewID,Title,Genre,Description,Score,SelectedDeveloper,SelectedGame")] Review review)
+        public ActionResult Create([Bind(Include = "ReviewID,Title,Genre,Description,Score,DeveloperID,GameID")] Review review)
         {
             if (ModelState.IsValid)
             {
+                review.GameID = Convert.ToInt32(TempData["GameID"]);
+                review.DeveloperID = Convert.ToInt32(TempData["DeveloperID"]);
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,7 +100,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReviewID,Title,Genre,Description,Score,SelectedDeveloper,SelectedGame")] Review review)
+        public ActionResult Edit([Bind(Include = "ReviewID,Title,Genre,Description,Score,DeveloperID,GameID")] Review review)
         {
             if (ModelState.IsValid)
             {

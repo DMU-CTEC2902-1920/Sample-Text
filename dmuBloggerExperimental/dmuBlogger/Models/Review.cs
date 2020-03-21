@@ -24,10 +24,10 @@ namespace dmuBlogger.Models
         [Required]
         public virtual Int32 Score { get; set; }
         //Developer of the game
-        public string SelectedDeveloper { get; set; }
+        public int DeveloperID { get; set; }
         public IEnumerable<SelectListItem> Developer { get; set; }
         //What game is being reviewed
-        public string SelectedGame { get; set; }
+        public int GameID { get; set; }
         public IEnumerable<SelectListItem> Game { get; set; }
     }
 }

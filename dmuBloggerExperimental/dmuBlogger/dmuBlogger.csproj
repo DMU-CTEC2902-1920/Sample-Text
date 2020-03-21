@@ -138,13 +138,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003201403131_InitialCreate.cs" />
-    <Compile Include="Migrations\202003201403131_InitialCreate.Designer.cs">
-      <DependentUpon>202003201403131_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202003201136583_InitialCreate.cs" />
+    <Compile Include="Migrations\202003201136583_InitialCreate.Designer.cs">
+      <DependentUpon>202003201136583_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003211543323_Games.cs" />
-    <Compile Include="Migrations\202003211543323_Games.Designer.cs">
-      <DependentUpon>202003211543323_Games.cs</DependentUpon>
+    <Compile Include="Migrations\202003211727237_Reviews.cs" />
+    <Compile Include="Migrations\202003211727237_Reviews.Designer.cs">
+      <DependentUpon>202003211727237_Reviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003211757047_Reviews1.cs" />
+    <Compile Include="Migrations\202003211757047_Reviews1.Designer.cs">
+      <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blacklist.cs" />
@@ -233,11 +237,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003201403131_InitialCreate.resx">
-      <DependentUpon>202003201403131_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003201136583_InitialCreate.resx">
+      <DependentUpon>202003201136583_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003211543323_Games.resx">
-      <DependentUpon>202003211543323_Games.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003211727237_Reviews.resx">
+      <DependentUpon>202003211727237_Reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003211757047_Reviews1.resx">
+      <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

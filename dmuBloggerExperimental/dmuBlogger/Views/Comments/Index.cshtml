@@ -4,20 +4,25 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
     int x = Convert.ToInt32(TempData["ReviewID"]);
+    string Title = "";
+    if (ViewData["id"] == null)
+    {
+        Title = "ALL COMMENTS SHOULD NOT BE BROWSABLE, FIX THIS";
+    }
+    else
+    {
+        Title = "Comments for '" + ViewData["name"]+"'";
+    }
 }
 
-<!DOCTYPE html>
-
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Comments for @TempData["ReviewID"]</title>
 </head>
+<h2>@Title</h2>
 <body>
     <p>
-        Comments for @TempData["ReviewID"]
         <br />
-        @Html.ActionLink("Add Comment", "Create", new { id = TempData["ReviewID"] })
+        @Html.ActionLink("Add Comment", "Create", new { id = ViewData["id"] })
     </p>
     <table class="table">
         <tr>
@@ -38,7 +43,7 @@
 
         @foreach (var item in Model)
         {
-            if (item.ReviewID == Convert.ToInt32(TempData["ReviewID"]))
+            if (item.ReviewID == Convert.ToInt32(ViewData["id"]))
             {
                 <tr>
                     <!--<td>
@@ -64,4 +69,3 @@
 
     </table>
 </body>
-</html>

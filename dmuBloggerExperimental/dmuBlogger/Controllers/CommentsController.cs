@@ -16,11 +16,21 @@ namespace dmuBlogger.Controllers
         private CommentContext db = new CommentContext();
 
         // GET: Comments
-        public ActionResult Index()//string ReviewID)
+        public ActionResult Index(int? id)
         {
-            //Int32 ReviewIDInt = Convert.ToInt32(ReviewID);
-            //ViewData["ReviewID"] = ReviewIDInt;
-            return View(db.Comments.ToList());
+            if (id != null)
+            {
+                ReviewContext dbReview = new ReviewContext();
+                Review review = dbReview.Reviews.Find(id);
+                ViewData["id"] = id;
+                ViewData["name"] = review.Title;
+                return View(db.Comments.ToList());
+            }
+            else
+            {
+                ViewData["id"] = null;
+                return RedirectToAction("../Home/Index");
+            }
         }
 
         // GET: Comments/Details/5
@@ -54,12 +64,18 @@ namespace dmuBlogger.Controllers
         {
             if (ModelState.IsValid)
             {
-                comment.ReviewID = Convert.ToInt32(TempData["id"]);
+                comment.ReviewID = Convert.ToInt32(TempData["ReviewID"]);
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Comments/Index/" + Convert.ToString(TempData["ReviewID"]));
+                //return RedirectToAction("Index");
             }
-            return View(comment);
+            //ReviewContext dbReview = new ReviewContext();
+            //Review review = dbReview.Reviews.Find(Convert.ToInt32(TempData["ReviewID"]));
+            //ViewData["id"] = Convert.ToInt32(TempData["ReviewID"]);
+            //ViewData["name"] = review.Title;
+            //return View(db.Comments.ToList());
+            return RedirectToAction("~/Comments/Index/"+Convert.ToString(TempData["ReviewID"]));
         }
 
         // GET: Comments/Edit/5
