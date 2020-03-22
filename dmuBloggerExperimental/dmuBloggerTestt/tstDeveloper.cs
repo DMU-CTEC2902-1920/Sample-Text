@@ -11,7 +11,7 @@ namespace dmuBloggerTest
     public class tstDeveloper
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod2()
         {
             var controller = new DevelopersController();
             var result = controller.Index() as ViewResult;

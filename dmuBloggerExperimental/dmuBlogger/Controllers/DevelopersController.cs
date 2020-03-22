@@ -14,7 +14,6 @@ namespace dmuBlogger.Controllers
     public class DevelopersController : Controller
     {
         private DeveloperContext db = new DeveloperContext();
-
         // GET: Developers
         public ActionResult Index()
         {
