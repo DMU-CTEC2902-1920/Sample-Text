@@ -18,6 +18,7 @@ namespace dmuBlogger.Controllers
         // GET: Games
         public ActionResult Index(int? id)
         {
+            string ip = Request.UserHostAddress;
             if (id != null)
             {
                 DeveloperContext dbDeveloper = new DeveloperContext();
