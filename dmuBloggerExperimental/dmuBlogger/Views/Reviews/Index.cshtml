@@ -16,7 +16,16 @@
 <h2>@Title</h2>
 
 <p>
-    @Html.ActionLink("Write review", "Create", new { id = ViewData["id"] })
+    @{
+        if (ViewData["id"] == null)
+        {
+            @Html.ActionLink("To add a review, go to the game page and select a game", "../Games/Index/");
+        }
+        else
+        {
+            @Html.ActionLink("Add Review", "Create", new { id = ViewData["id"] });
+        }
+    }
 </p>
 <table class="table">
     <tr>
