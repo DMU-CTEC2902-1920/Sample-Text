@@ -16,10 +16,19 @@
 
     <h2>@Title</h2>
 
-<p>
-    <br />
-    @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] })
-</p>
+    <p>
+        <br />
+        @{
+            if (ViewData["id"] == null)
+            {
+                @Html.ActionLink("To add a game, go to the developer page and select a developer", "../Developers/Index/");
+            }
+            else
+            {
+                @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] });
+            }
+        }
+    </p>
 <table class="table">
     <tr>
         <th>
