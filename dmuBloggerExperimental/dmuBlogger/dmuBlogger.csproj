@@ -142,17 +142,13 @@
     <Compile Include="Migrations\202003201136583_InitialCreate.Designer.cs">
       <DependentUpon>202003201136583_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003211727237_Reviews.cs" />
-    <Compile Include="Migrations\202003211727237_Reviews.Designer.cs">
-      <DependentUpon>202003211727237_Reviews.cs</DependentUpon>
+    <Compile Include="Migrations\202003231821059_Blacklist.cs" />
+    <Compile Include="Migrations\202003231821059_Blacklist.Designer.cs">
+      <DependentUpon>202003231821059_Blacklist.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003211757047_Reviews1.cs" />
-    <Compile Include="Migrations\202003211757047_Reviews1.Designer.cs">
-      <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003231737243_Game.cs" />
-    <Compile Include="Migrations\202003231737243_Game.Designer.cs">
-      <DependentUpon>202003231737243_Game.cs</DependentUpon>
+    <Compile Include="Migrations\202003231830480_Blacklist1.cs" />
+    <Compile Include="Migrations\202003231830480_Blacklist1.Designer.cs">
+      <DependentUpon>202003231830480_Blacklist1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blacklist.cs" />
@@ -221,6 +217,7 @@
     <Content Include="Views\Blacklists\Details.cshtml" />
     <Content Include="Views\Blacklists\Edit.cshtml" />
     <Content Include="Views\Blacklists\Index.cshtml" />
+    <Content Include="Views\Blacklists\UserBlacklist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -242,14 +239,11 @@
     <EmbeddedResource Include="Migrations\202003201136583_InitialCreate.resx">
       <DependentUpon>202003201136583_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003211727237_Reviews.resx">
-      <DependentUpon>202003211727237_Reviews.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003231821059_Blacklist.resx">
+      <DependentUpon>202003231821059_Blacklist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003211757047_Reviews1.resx">
-      <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003231737243_Game.resx">
-      <DependentUpon>202003231737243_Game.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003231830480_Blacklist1.resx">
+      <DependentUpon>202003231830480_Blacklist1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

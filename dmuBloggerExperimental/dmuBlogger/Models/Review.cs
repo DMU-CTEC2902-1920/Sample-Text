@@ -25,9 +25,7 @@ namespace dmuBlogger.Models
         public virtual Int32 Score { get; set; }
         //Developer of the game
         public int DeveloperID { get; set; }
-        public IEnumerable<SelectListItem> Developer { get; set; }
         //What game is being reviewed
         public int GameID { get; set; }
-        public IEnumerable<SelectListItem> Game { get; set; }
     }
 }

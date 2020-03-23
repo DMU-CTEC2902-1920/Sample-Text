@@ -13,9 +13,12 @@ namespace dmuBlogger.Models
         [Key]
         public virtual int BlacklistId { get; set; }
 
-        //Email to be blacklisted (will not be able to post any more comments)
+        //IP to be blacklisted (will not be able to post)
         [Required]
-        public virtual string BlacklistEmail { get; set; }
+        public virtual string BlacklistIP { get; set; }
+
+        //Reason for being blacklisted, is show to blacklisted users and mods
+        public virtual string BlacklistReason { get; set; }
 
     }
 }

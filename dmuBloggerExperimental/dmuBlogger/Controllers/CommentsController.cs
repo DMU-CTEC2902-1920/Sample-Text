@@ -14,6 +14,7 @@ namespace dmuBlogger.Controllers
     public class CommentsController : Controller
     {
         private CommentContext db = new CommentContext();
+        private BlacklistContext dbBlacklist = new BlacklistContext();
 
         // GET: Comments
         public ActionResult Index(int? id)
@@ -62,7 +63,16 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentID,ReviewID,Description,Name,EMail")] Comment comment)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
             {
                 comment.ReviewID = Convert.ToInt32(TempData["ReviewID"]);
                 db.Comments.Add(comment);
@@ -70,12 +80,14 @@ namespace dmuBlogger.Controllers
                 return RedirectToAction("../Comments/Index/" + Convert.ToString(TempData["ReviewID"]));
                 //return RedirectToAction("Index");
             }
-            //ReviewContext dbReview = new ReviewContext();
-            //Review review = dbReview.Reviews.Find(Convert.ToInt32(TempData["ReviewID"]));
-            //ViewData["id"] = Convert.ToInt32(TempData["ReviewID"]);
-            //ViewData["name"] = review.Title;
-            //return View(db.Comments.ToList());
-            return RedirectToAction("~/Comments/Index/"+Convert.ToString(TempData["ReviewID"]));
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return RedirectToAction("../Comments/Index/" + Convert.ToString(TempData["ReviewID"]));
+            }
         }
 
         // GET: Comments/Edit/5

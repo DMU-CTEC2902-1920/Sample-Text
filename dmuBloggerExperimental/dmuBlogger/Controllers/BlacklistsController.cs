@@ -47,7 +47,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlacklistId,BlacklistEmail")] Blacklist blacklist)
+        public ActionResult Create([Bind(Include = "BlacklistId,BlacklistIP,BlacklistReason")] Blacklist blacklist)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BlacklistId,BlacklistEmail")] Blacklist blacklist)
+        public ActionResult Edit([Bind(Include = "BlacklistId,BlacklistIP,BlacklistReason")] Blacklist blacklist)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +114,17 @@ namespace dmuBlogger.Controllers
             db.Blacklists.Remove(blacklist);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET: User ban message
+        public ActionResult UserBlacklist()
+        {
+            ViewBag.IP = Request.UserHostAddress;
+            foreach (Blacklist blacklist in db.Blacklists.ToList())
+            {
+                string IP = blacklist.BlacklistIP;
+            }
+            return View(db.Blacklists.ToList());
         }
 
         protected override void Dispose(bool disposing)

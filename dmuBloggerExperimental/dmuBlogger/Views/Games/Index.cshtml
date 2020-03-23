@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
     int x = Convert.ToInt32(TempData["DeveloperID"]);
     string Title = "";
+
+    //Condition to check if the user originated from a developer details page or not, and to set the title appropriately
     if (ViewData["id"] == null)
     {
         Title = "All games";
@@ -19,6 +21,7 @@
 <p>
     <br />
     @{
+        //Condition to check if the user originated from a developer details page or not
         if (ViewData["id"] == null)
         {
             @Html.ActionLink("To add a game or browse by developer, go to the developer page and select a developer", "../Developers/Index/");
@@ -32,6 +35,7 @@
 @using (Html.BeginForm())
 {
     <p>
+        <!--Search box to make it easier to search games-->
         Find by name: @Html.TextBox("SearchString")
         <input type="submit" value="Search" />
     </p>

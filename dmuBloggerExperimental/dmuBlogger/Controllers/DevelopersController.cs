@@ -14,6 +14,7 @@ namespace dmuBlogger.Controllers
     public class DevelopersController : Controller
     {
         private DeveloperContext db = new DeveloperContext();
+        private BlacklistContext dbBlacklist = new BlacklistContext();
 
         // GET: Developers
         public ActionResult Index(string sortOrder, string searchString)
@@ -74,14 +75,29 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "DeveloperId,Name,Description")] Developer developer)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
             {
                 db.Developers.Add(developer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(developer);
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return View(developer);
+            }
         }
 
         // GET: Developers/Edit/5
@@ -106,13 +122,29 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "DeveloperId,Name,Description")] Developer developer)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
             {
                 db.Entry(developer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(developer);
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return View(developer);
+            }
         }
 
         // GET: Developers/Delete/5
@@ -135,10 +167,22 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Developer developer = db.Developers.Find(id);
-            db.Developers.Remove(developer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+            if (Banned == false)
+            {
+                Developer developer = db.Developers.Find(id);
+                db.Developers.Remove(developer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else { return RedirectToAction("../Blacklists/UserBlacklist/"); }
         }
 
         protected override void Dispose(bool disposing)

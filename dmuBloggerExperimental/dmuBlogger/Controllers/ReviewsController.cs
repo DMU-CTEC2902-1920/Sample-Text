@@ -14,6 +14,7 @@ namespace dmuBlogger.Controllers
     public class ReviewsController : Controller
     {
         private ReviewContext db = new ReviewContext();
+        private BlacklistContext dbBlacklist = new BlacklistContext();
 
         // GET: Reviews
         public ActionResult Index(int? id)
@@ -68,7 +69,16 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReviewID,Title,Genre,Description,Score,DeveloperID,GameID")] Review review)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
             {
                 review.GameID = Convert.ToInt32(TempData["GameID"]);
                 review.DeveloperID = Convert.ToInt32(TempData["DeveloperID"]);
@@ -76,8 +86,14 @@ namespace dmuBlogger.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(review);
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return View(review);
+            }
         }
 
         // GET: Reviews/Edit/5
@@ -102,13 +118,31 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReviewID,Title,Genre,Description,Score,DeveloperID,GameID")] Review review)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
             {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
+            {
+                review.GameID = Convert.ToInt32(TempData["GameID"]);
+                review.DeveloperID = Convert.ToInt32(TempData["DeveloperID"]);
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(review);
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return View(review);
+            }
         }
 
         // GET: Reviews/Delete/5
@@ -131,10 +165,22 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Review review = db.Reviews.Find(id);
-            db.Reviews.Remove(review);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
+            {
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+            if (Banned == false)
+            {
+                Review review = db.Reviews.Find(id);
+                db.Reviews.Remove(review);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else { return RedirectToAction("../Blacklists/UserBlacklist/"); }
         }
 
         protected override void Dispose(bool disposing)
