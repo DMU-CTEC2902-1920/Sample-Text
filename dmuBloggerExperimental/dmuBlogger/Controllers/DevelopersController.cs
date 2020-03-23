@@ -16,10 +16,35 @@ namespace dmuBlogger.Controllers
         private DeveloperContext db = new DeveloperContext();
 
         // GET: Developers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Developers.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var developers = from s in db.Developers select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                developers = developers.Where(s => s.Name.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "DeveloperId":
+                    developers = developers.OrderByDescending(s => s.DeveloperId);
+                    break;
+                case "Name":
+                    developers = developers.OrderBy(s => s.Name);
+                    break;
+                case "Description":
+                    developers = developers.OrderByDescending(s => s.Description);
+                    break;
+                default:
+                    developers = developers.OrderBy(s => s.Name);
+                    break;
+            }
+            return View(developers.ToList());
         }
+        //return View(db.Developers.ToList());
 
         // GET: Developers/Details/5
         public ActionResult Details(int? id)
