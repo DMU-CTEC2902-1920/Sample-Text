@@ -9,8 +9,10 @@ namespace dmuBlogger.Models
     public class Game
     {
         //Primary key for the game class/table
+        [Required]
         public virtual Int32 GameId { get; set; }
         //Foreign key - the developer who made the game
+        [Required]
         public virtual int DeveloperID { get; set; }
         //Name of the game
         [Required]

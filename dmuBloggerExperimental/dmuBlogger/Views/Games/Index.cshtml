@@ -14,21 +14,28 @@
     }
 }
 
-    <h2>@Title</h2>
+<h2>@Title</h2>
 
-    <p>
-        <br />
-        @{
-            if (ViewData["id"] == null)
-            {
-                @Html.ActionLink("To add a game, go to the developer page and select a developer", "../Developers/Index/");
-            }
-            else
-            {
-                @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] });
-            }
+<p>
+    <br />
+    @{
+        if (ViewData["id"] == null)
+        {
+            @Html.ActionLink("To add a game or browse by developer, go to the developer page and select a developer", "../Developers/Index/");
         }
+        else
+        {
+            @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] });
+        }
+    }
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
     </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -43,27 +50,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    if (item.DeveloperID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
+    @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeveloperID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameReleaseDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.GameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
-        </td>
-    </tr>
+        if (item.DeveloperID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeveloperID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameReleaseDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.GameId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
+                </td>
+            </tr>
+        }
     }
-}
 
 </table>

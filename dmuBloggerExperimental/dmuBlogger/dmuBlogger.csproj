@@ -150,6 +150,10 @@
     <Compile Include="Migrations\202003211757047_Reviews1.Designer.cs">
       <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003231737243_Game.cs" />
+    <Compile Include="Migrations\202003231737243_Game.Designer.cs">
+      <DependentUpon>202003231737243_Game.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blacklist.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -243,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003211757047_Reviews1.resx">
       <DependentUpon>202003211757047_Reviews1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003231737243_Game.resx">
+      <DependentUpon>202003231737243_Game.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

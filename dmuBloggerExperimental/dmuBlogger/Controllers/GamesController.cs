@@ -16,9 +16,8 @@ namespace dmuBlogger.Controllers
         private GameContext db = new GameContext();
 
         // GET: Games
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, string sortOrder, string searchString)
         {
-            string ip = Request.UserHostAddress;
             if (id != null)
             {
                 DeveloperContext dbDeveloper = new DeveloperContext();
@@ -31,7 +30,32 @@ namespace dmuBlogger.Controllers
             {
                 ViewData["id"] = null;
             }
-            return View(db.Games.ToList());
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name" : "";
+            ViewBag.DateSortParm = sortOrder == "GameReleaseDate" ? "date_desc" : "Date";
+            var games = from s in db.Games select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                games = games.Where(s => s.GameName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "GameId":
+                    games = games.OrderByDescending(s => s.GameId);
+                    break;
+                case "Name":
+                    games = games.OrderBy(s => s.GameName);
+                    break;
+                case "GameReleaseDate":
+                    games = games.OrderByDescending(s => s.GameReleaseDate);
+                    break;
+                default:
+                    games = games.OrderBy(s => s.GameName);
+                    break;
+            }
+            return View(games.ToList());
         }
 
         // GET: Games/Details/5
