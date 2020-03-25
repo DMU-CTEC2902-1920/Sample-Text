@@ -18,8 +18,9 @@ namespace dmuBlogger.Controllers
 
 
         // GET: Games
-        public ActionResult Index(int? id, string sortOrder, string searchString)
+        public ActionResult Index(int? id, string sortOrder, string searchStringName, string searchStringGenre)
         {
+
             if (id != null)
             {
                 DeveloperContext dbDeveloper = new DeveloperContext();
@@ -37,9 +38,13 @@ namespace dmuBlogger.Controllers
             ViewBag.DateSortParm = sortOrder == "GameReleaseDate" ? "date_desc" : "Date";
             var games = from s in db.Games select s;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchStringName))
             {
-                games = games.Where(s => s.GameName.Contains(searchString));
+                games = games.Where(s => s.GameName.Contains(searchStringName));
+            }
+            if (!String.IsNullOrEmpty(searchStringGenre))
+            {
+                games = games.Where(s => s.GameGenre.Contains(searchStringGenre));
             }
 
             switch (sortOrder)
@@ -87,7 +92,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GameId,DeveloperID,GameName,GameReleaseDate")] Game game)
+        public ActionResult Create([Bind(Include = "GameId,DeveloperID,GameName,GameGenre,GameReleaseDate")] Game game)
         {
             bool Banned = false;
             foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
@@ -100,6 +105,7 @@ namespace dmuBlogger.Controllers
 
             if (ModelState.IsValid && Banned == false)
             {
+                var x = game.GameGenre;
                 game.DeveloperID = Convert.ToInt32(TempData["id"]);
                 db.Games.Add(game);
                 db.SaveChanges();
@@ -135,7 +141,7 @@ namespace dmuBlogger.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GameId,DeveloperID,GameName,GameReleaseDate")] Game game)
+        public ActionResult Edit([Bind(Include = "GameId,DeveloperID,GameName,GameGenre,GameReleaseDate")] Game game)
         {
             bool Banned = false;
             foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
