@@ -40,7 +40,7 @@
         <input type="submit" value="Search" />
     </p>
 }
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DeveloperID)
@@ -48,7 +48,7 @@
         <th>
             @Html.DisplayNameFor(model => model.GameName)
         </th>
-        <th>
+        <th class="text-right">
             @Html.DisplayNameFor(model => model.GameReleaseDate)
         </th>
         <th></th>
@@ -65,7 +65,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.GameName)
                 </td>
-                <td>
+                <td class="text-right">
                     @Html.DisplayFor(modelItem => item.GameReleaseDate)
                 </td>
                 <td>
