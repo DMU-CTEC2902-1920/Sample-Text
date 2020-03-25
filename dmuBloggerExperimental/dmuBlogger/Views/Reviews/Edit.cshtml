@@ -12,6 +12,7 @@
     <title>Edit</title>
 </head>
 <body>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
 
@@ -21,6 +22,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
+            <br />
             <h4>Review</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
