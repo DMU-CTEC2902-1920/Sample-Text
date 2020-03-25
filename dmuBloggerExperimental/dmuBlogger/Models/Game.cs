@@ -10,6 +10,7 @@ namespace dmuBlogger.Models
     {
         //Primary key for the game class/table
         [Required]
+        [Key]
         public virtual Int32 GameId { get; set; }
         //Foreign key - the developer who made the game
         [Required]
@@ -17,6 +18,7 @@ namespace dmuBlogger.Models
         //Name of the game
         [Required]
         public virtual String GameName { get; set; }
+        public virtual String GameGenre { get; set; }
         //Date when the game was/will be released
         public virtual String GameReleaseDate { get; set; }
     }
