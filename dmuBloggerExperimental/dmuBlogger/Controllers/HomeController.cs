@@ -12,5 +12,10 @@ namespace dmuBlogger.Controllers
         {
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
