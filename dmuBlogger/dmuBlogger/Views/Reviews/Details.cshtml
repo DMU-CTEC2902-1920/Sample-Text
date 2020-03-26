@@ -26,14 +26,6 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Genre)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Genre)
-            </dd>
-
-            <dt>
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
 
@@ -50,19 +42,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.DeveloperID)
+                Game page
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.DeveloperID)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.GameID)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.GameID)
+                @Html.ActionLink("View", "../Games/Details/", new { id = Model.GameID})
             </dd>
 
         </dl>

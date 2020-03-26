@@ -33,19 +33,13 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Score)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DeveloperID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GameID)
+            Game page
         </th>
         <th></th>
     </tr>
@@ -58,19 +52,13 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Score)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeveloperID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GameID)
+                @Html.ActionLink("View", "../Games/Details/", new { id = item.GameID })
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |

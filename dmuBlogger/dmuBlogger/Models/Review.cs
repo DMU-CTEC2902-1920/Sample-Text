@@ -22,6 +22,7 @@ namespace dmuBlogger.Models
         public virtual string Description { get; set; }
         //Rating of the game from 1 to 10
         [Required]
+        [Range(0, 10)]
         public virtual Int32 Score { get; set; }
         //Developer of the game
         public int DeveloperID { get; set; }

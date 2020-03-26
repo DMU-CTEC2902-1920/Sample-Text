@@ -59,16 +59,16 @@
 <table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DeveloperID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.GameName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GameGenre)
         </th>
-        <th class="text-right">
+        <th>
             @Html.DisplayNameFor(model => model.GameReleaseDate)
+        </th>
+        <th class="text-right">
+            Developer page
         </th>
         <th></th>
     </tr>
@@ -79,16 +79,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeveloperID)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.GameName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.GameGenre)
                 </td>
-                <td class="text-right">
+                <td>
                     @Html.DisplayFor(modelItem => item.GameReleaseDate)
+                </td>
+                <td class="text-right">
+                    @Html.ActionLink("View", "../Developers/Details/", new { id = item.DeveloperID })
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |

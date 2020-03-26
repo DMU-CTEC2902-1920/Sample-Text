@@ -10,13 +10,6 @@
     <h4>Game</h4>
     <hr />
     <dl class="dl-horizontal">
-        <!--<dt>
-        @Html.DisplayNameFor(model => model.DeveloperID)
-    </dt>-->
-        <!--<dd>
-        @Html.DisplayFor(model => model.DeveloperID)
-    </dd>-->
-
         <dt>
             @Html.DisplayNameFor(model => model.GameName)
         </dt>
@@ -39,6 +32,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.GameReleaseDate)
+        </dd>
+
+        <dt>
+            Developer page
+        </dt>
+
+        <dd>
+            @Html.ActionLink("View", "../Games/Details/", new { id = Model.DeveloperID })
         </dd>
 
     </dl>
