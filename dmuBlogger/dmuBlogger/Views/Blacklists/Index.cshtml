@@ -1,0 +1,39 @@
+﻿@model IEnumerable<dmuBlogger.Models.Blacklist>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Blacklist</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlacklistIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlacklistReason)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlacklistIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlacklistReason)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BlacklistId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BlacklistId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BlacklistId })
+        </td>
+    </tr>
+}
+
+</table>
