@@ -2,6 +2,10 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Int32 GameID = Convert.ToInt32(ViewData["id"]);
+    Int32 DeveloperID = Convert.ToInt32(ViewData["developerID"]);
+    TempData["GameID"] = GameID;
+    TempData["DeveloperID"] = DeveloperID;
 }
 
 <!DOCTYPE html>
@@ -12,14 +16,15 @@
     <title>Create</title>
 </head>
 <body>
+    <br />
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
+
+
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h4>Review</h4>
             <hr />
@@ -31,7 +36,7 @@
                     @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -39,7 +44,7 @@
                     @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -47,7 +52,7 @@
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Score, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -55,33 +60,37 @@
                     @Html.ValidationMessageFor(model => model.Score, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
-                @Html.LabelFor(x => Model.SelectedDeveloper, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(x => Model.DeveloperID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-5">
-                    @Html.EditorFor(model => model.SelectedGame, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(x => x.SelectedDeveloper, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.GameID, new { htmlAttributes = new { @class = "form-control", @Value = Convert.ToString(DeveloperID), disabled = "disabled" } })
+                    @Html.ValidationMessageFor(x => x.DeveloperID, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
-                @Html.LabelFor(model => model.SelectedGame, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.GameID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.SelectedGame, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SelectedGame, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.GameID, new { htmlAttributes = new { @class = "form-control", @Value = Convert.ToString(GameID), disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.GameID, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </div>
         </div>
     }
-    
+
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>
 </html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

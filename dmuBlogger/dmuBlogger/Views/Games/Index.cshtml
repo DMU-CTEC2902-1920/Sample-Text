@@ -2,38 +2,101 @@
 
 @{
     ViewBag.Title = "Index";
-}
+    int x = Convert.ToInt32(TempData["DeveloperID"]);
+    string Title = "";
+    dmuBlogger.Models.Genre Genre = new dmuBlogger.Models.Genre();
 
-<h2>Index</h2>
+    //Condition to check if the user originated from a developer details page or not, and to set the title appropriately
+    if (ViewData["id"] == null)
+    {
+        Title = "All games";
+    }
+    else
+    {
+        Title = "Games by " + ViewData["name"];
+    }
+}
+<br />
+<h2>@Title</h2>
+
+<div class="card">
+    <div class="card-header">
+        <a data-toggle="collapse" href="#search">Click to open search</a>
+    </div>
+    <div id="search" class="collapse">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <!--Search box to make it easier to search games-->
+                    Find by name: @Html.TextBox("SearchStringName")
+                    <input type="submit" value="Search by name" class="btn" />
+                </p>
+                <p>
+                    Find by genre: @Html.DropDownList("SearchStringGenre", new SelectList(Genre.GenreList))
+                    <input type="submit" value="Search by genre" class="btn" />
+                </p>
+            }
+        </div>
+    </div>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <br />
+    @{
+        //Condition to check if the user originated from a developer details page or not
+        if (ViewData["id"] == null)
+        {
+            @Html.ActionLink("To add a game or browse by developer, go to the developer page and select a developer", "../Developers/Index/");
+        }
+        else
+        {
+            @Html.ActionLink("Add Game", "Create", new { id = ViewData["id"] });
+        }
+    }
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DeveloperID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.GameName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.GameGenre)
+        </th>
+        <th class="text-right">
             @Html.DisplayNameFor(model => model.GameReleaseDate)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameReleaseDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GameId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GameId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        if (item.DeveloperID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeveloperID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameGenre)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.GameReleaseDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.GameId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
+                </td>
+            </tr>
+        }
+    }
 
 </table>

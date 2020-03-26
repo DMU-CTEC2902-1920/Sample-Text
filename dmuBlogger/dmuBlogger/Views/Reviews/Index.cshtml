@@ -1,44 +1,58 @@
 ﻿@model IEnumerable<dmuBlogger.Models.Review>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    string Title = "";
+    if (ViewData["id"] == null)
+    {
+        Title = "All reviews";
+    }
+    else
+    {
+        Title = "Reviews for " + ViewData["name"];
+    }
 }
+<br />
+<h2>@Title</h2>
 
-<!DOCTYPE html>
+<p>
+    @{
+        if (ViewData["id"] == null)
+        {
+            @Html.ActionLink("To add a review or browse reviews by game, go to the game page and select a game", "../Games/Index/");
+        }
+        else
+        {
+            @Html.ActionLink("Add Review", "Create", new { id = ViewData["id"] });
+        }
+    }
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeveloperID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameID)
+        </th>
+        <th></th>
+    </tr>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Score)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SelectedDeveloper)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SelectedGame)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+@foreach (var item in Model) {
+    if (item.GameID == Convert.ToInt32(ViewData["id"]) || ViewData["id"] == null)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -53,19 +67,18 @@
                 @Html.DisplayFor(modelItem => item.Score)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SelectedDeveloper)
+                @Html.DisplayFor(modelItem => item.DeveloperID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SelectedGame)
+                @Html.DisplayFor(modelItem => item.GameID)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
             </td>
         </tr>
     }
-    
-    </table>
-</body>
-</html>
+}
+
+</table>

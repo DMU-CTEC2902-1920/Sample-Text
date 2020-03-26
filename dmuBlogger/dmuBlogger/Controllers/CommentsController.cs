@@ -14,13 +14,24 @@ namespace dmuBlogger.Controllers
     public class CommentsController : Controller
     {
         private CommentContext db = new CommentContext();
+        private BlacklistContext dbBlacklist = new BlacklistContext();
 
         // GET: Comments
-        public ActionResult Index()//string ReviewID)
+        public ActionResult Index(int? id)
         {
-            //Int32 ReviewIDInt = Convert.ToInt32(ReviewID);
-            //ViewData["ReviewID"] = ReviewIDInt;
-            return View(db.Comments.ToList());
+            if (id != null)
+            {
+                ReviewContext dbReview = new ReviewContext();
+                Review review = dbReview.Reviews.Find(id);
+                ViewData["id"] = id;
+                ViewData["name"] = review.Title;
+                return View(db.Comments.ToList());
+            }
+            else
+            {
+                ViewData["id"] = null;
+                return RedirectToAction("../Home/Index");
+            }
         }
 
         // GET: Comments/Details/5
@@ -52,14 +63,31 @@ namespace dmuBlogger.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentID,ReviewID,Description,Name,EMail")] Comment comment)
         {
-            if (ModelState.IsValid)
+            bool Banned = false;
+            foreach (Blacklist blacklist in dbBlacklist.Blacklists.ToList())
             {
-                comment.ReviewID = Convert.ToInt32(TempData["id"]);
+                if (blacklist.BlacklistIP == Request.UserHostAddress)
+                {
+                    Banned = true;
+                }
+            }
+
+            if (ModelState.IsValid && Banned == false)
+            {
+                comment.ReviewID = Convert.ToInt32(TempData["ReviewID"]);
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Comments/Index/" + Convert.ToString(TempData["ReviewID"]));
+                //return RedirectToAction("Index");
             }
-            return View(comment);
+            if (Banned == true)
+            {
+                return RedirectToAction("../Blacklists/UserBlacklist/");
+            }
+            else
+            {
+                return RedirectToAction("../Comments/Index/" + Convert.ToString(TempData["ReviewID"]));
+            }
         }
 
         // GET: Comments/Edit/5

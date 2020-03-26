@@ -13,65 +13,64 @@
 </head>
 <body>
     <div>
+        <br />
         <h4>Review</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.Title)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Title)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Genre)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Genre)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Score)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Score)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.SelectedDeveloper)
+                @Html.DisplayNameFor(model => model.DeveloperID)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.SelectedDeveloper)
+                @Html.DisplayFor(model => model.DeveloperID)
             </dd>
-    
+
             <dt>
-                @Html.DisplayNameFor(model => model.SelectedGame)
+                @Html.DisplayNameFor(model => model.GameID)
             </dt>
-    
+
             <dd>
-                @Html.DisplayFor(model => model.SelectedGame)
+                @Html.DisplayFor(model => model.GameID)
             </dd>
-    
+
         </dl>
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID }) |
         @Html.ActionLink("Back to List", "Index") |
-        @Html.ActionLink("View Comments", "../Comments")
-        <!--Html.ActionLink("View Comments", "../Comments", new { ReviewID = Model.ReviewID })-->
-        @{ TempData["ReviewID"] = Model.ReviewID; }
+        @Html.ActionLink("View Comments", "../Comments/Index", new { id = Model.ReviewID })
     </p>
 </body>
 </html>

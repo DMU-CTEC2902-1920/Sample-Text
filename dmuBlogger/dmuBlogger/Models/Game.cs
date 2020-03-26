@@ -8,19 +8,18 @@ namespace dmuBlogger.Models
 {
     public class Game
     {
-
-        public Game()
-        {
-            this.Comments = new HashSet<Comment>();
-        }
-
+        //Primary key for the game class/table
+        [Required]
         [Key]
-        public Int32 GameId { get; set; }
+        public virtual Int32 GameId { get; set; }
+        //Foreign key - the developer who made the game
         [Required]
-        public String GameName { get; set; }
+        public virtual int DeveloperID { get; set; }
+        //Name of the game
         [Required]
-        public String GameReleaseDate { get; set; }
-
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual String GameName { get; set; }
+        public virtual String GameGenre { get; set; }
+        //Date when the game was/will be released
+        public virtual String GameReleaseDate { get; set; }
     }
 }
