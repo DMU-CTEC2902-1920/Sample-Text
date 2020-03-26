@@ -1,0 +1,20 @@
+Ben:
+Review page - Non-Functional
+Add review 
+Add developer
+=======================
+Rayman: 
+Review list/game page
+Developer page
+============
+Zeb:
+Home page
+===========
+Adam:
+Mod user management - BANS ONLY
+Game search - BY SCORE AND BY TAG
+
+As your client, I want a website that lets users review games. I’m a big fan of games myself. I’d like to add a description of the game myself to get the ball rolling, and then let other users add their reviews about that game. So, we would end up with each game having a page of some sort that list all the reviews. I’d also like pages about developers, which would link to all the games they had made. I’d like users to be able to add comments about the developers, too. 
+I’d like users to be able to reply to each other’s comments, too. But I’d also like to be able to moderate, delete user comments and block users who post too many out-of-order or offensive comments. 
+Also, I’d like each review to have a “score out of ten (10)” (e.g. Score: 7.5 out of 10), so that there’s a league table of games that you can use to see either the most or least popular game.  
+I’d also like people to be able to tag games by their genre (action, adventure or miscellaneous etc), and then use those tags to be able to filter the best or worst tables with the games that are tagged with the specified tag (For example, user could list the worst “action” games in a table). Also, I’d like users to be able to watch a trailer of the game. 
